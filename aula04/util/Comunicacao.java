@@ -10,8 +10,8 @@ public class Comunicacao {
     
     public Comunicacao(Socket socket) {
         try {
-            in = new ObjectInputStream(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         }
