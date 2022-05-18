@@ -1,10 +1,13 @@
 package br.anhembi.projeto01.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity // indica que esta classe será persistida no BD
@@ -22,6 +25,9 @@ public class User {
 
     @Column(name = "senha", length = 20)
     private String password;
+
+    @OneToMany(mappedBy = "id") // nome do campo usado como referência para mondar a lista de veículos deste usuário
+    private List<Veiculo> veiculos; // cada proprietário pode ter vários veículos
 
     public long getCode() {
         return code;
@@ -55,5 +61,12 @@ public class User {
         this.password = password;
     }
 
-    
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
 }
